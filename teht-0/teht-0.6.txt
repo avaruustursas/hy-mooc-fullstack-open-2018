@@ -1,0 +1,36 @@
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa uuden muistiinpanon
+käyttäjä painaa 'talleta' painiketta
+end note
+
+
+opt spa.js (lisätään muistiinpano)
+note right of selain
+spa.js
+   skripti huomaa, että HTML lomakkeen 'talleta' painiketta on painettu
+   luodaan uusi muistiipano JSON tietue
+   kutsutaan redrawNotes(), jolla päivitetään uusi data HTML:ään
+   kutsutaan sendToServer(note)
+end note
+selain->palvelin: spa.js:sendToServer(): POST /new_note_spa + data
+palvelin->selain: status 201 + lisätty teksti
+
+note right of selain
+spa.js
+   jos status 201, console.log(response_teksti)
+end note
+note left of selain
+console.log(muistiinpano)
+end note
+end opt
+
+
+
+note left of selain
+ selain näyttää HTML:n johon on lisätty uusi muistiinpano
+ Testin perusteella näyttää siltä, että jos joku muu on lisännyt
+ tällä välin muistiinpanoja esim. toisella selaimella, eivät
+ nämä lisäykset näy, koska data.json tiedostoa ei haeta uudestaan
+end note
+end

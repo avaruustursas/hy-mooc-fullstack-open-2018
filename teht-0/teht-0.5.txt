@@ -1,0 +1,50 @@
+kayttaja->selain:
+note left of selain
+kayttaja siirtyy osoitteeseen
+ https://fullstack-exampleapp.herokuapp.com/spa
+end note
+selain->palvelin: GET  https://fullstack-exampleapp.herokuapp.com/spa
+
+note left of palvelin
+  muodostetaan spa HTML pohja
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+
+
+note right of selain
+   selain lukee HTML:n <head> osiota (1/2)
+   main.css tiedosto
+end note
+selain->palvelin: GET main.css
+palvelin->selain: status 200 main.css
+
+note right of selain
+   selain lukee HTML:n <head> osiota (2/2)
+   spa.js
+end note
+selain->palvelin: GET spa.js
+palvelin->selain: status 200 spa.js
+
+opt spa.js
+note right of selain
+spa.js
+   luodaan taulukko muistiinpanoista 'notes'
+   yritetään hakea palvelimelta data.json
+end note
+selain->palvelin: spa.js: GET data.json
+palvelin->selain: status 200, data.json
+
+note right of selain
+spa.js
+   jos status 200, niin parsitaan json data taulukkoon notes
+   kutsutaan redrawNotes(), joka luo HTML listan notes datasta
+   (lisätään skriptissä mahdollisuus lisätä muistiinpanoja)
+end note
+end opt
+
+note left of selain
+ selain näyttää palvelimen palauttaman notes HTML:n
+ johon on lisätty data.json sisältämät tiedot ja jonka
+ ulkonäön päättää main.css tiedostossa määritellyt ohjeet
+end note
+end

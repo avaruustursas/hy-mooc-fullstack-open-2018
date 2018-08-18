@@ -1,0 +1,47 @@
+kayttaja->selain:
+note left of selain
+kayttaja kirjottaa osoiteriville
+fullstack-exampleapp.herokuapp.com/notes
+tai siirtyy sivulle käyttäen linkkiä
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+note left of palvelin
+  muodostetaan notes HTML pohja
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+
+note right of selain
+   selain lukee HTML:n <head> osiota (1/2)
+   main.css tiedosto
+end note
+selain->palvelin: GET main.css
+palvelin->selain: status 200 main.css
+
+note right of selain
+   selain lukee HTML:n <head> osiota (2/2)
+   main.js
+end note
+selain->palvelin: GET main.js
+palvelin->selain: status 200 main.js
+
+opt main.js
+note right of selain
+   main.js: yritetään hakea palvelimelta data.json
+end note
+selain->palvelin: GET data.json
+palvelin->selain: status 200, data.json
+
+note right of selain
+   jos data.json status 200
+   luetaan data.json tiedosto javascriptillä ja
+   päivitetään notes HTML:ää data.json datalla
+   eli lisätään lista HTML:ään, jos dataa löytyy
+end note
+end opt
+
+note left of selain
+ selain näyttää palvelimen palauttaman notes HTML:n
+ johon on lisätty data.json sisältämät tiedot ja jonka
+ ulkonäön päättää main.css tiedostossa määritellyt ohjeet
+end note
+end

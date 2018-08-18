@@ -43,7 +43,7 @@ end note
 end opt
 
 note left of selain
- selain näyttää palvelimen palauttaman notes HTML:n
+ selain näyttää palvelimen palauttaman spa HTML:n
  johon on lisätty data.json sisältämät tiedot ja jonka
  ulkonäön päättää main.css tiedostossa määritellyt ohjeet
 end note

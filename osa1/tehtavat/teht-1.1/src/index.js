@@ -6,6 +6,10 @@ const Otsikko = (props) => (
   <h1>{props.otsake}</h1>
 )
 
+// Sisalto: huolehtii osista ja niiden tehtävämääristä
+const Sisalto = (props) => (
+  <p>{props.nimi} {props.tehtavia}</p>
+)
 
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
@@ -19,9 +23,9 @@ const App = () => {
   return (
     <div>
       <Otsikko otsake={kurssi} />
-      <p>{osa1} {tehtavia1}</p>
-      <p>{osa2} {tehtavia2}</p>
-      <p>{osa3} {tehtavia3}</p>
+      <Sisalto nimi={osa1} tehtavia={tehtavia1} />
+      <Sisalto nimi={osa2} tehtavia={tehtavia2} />
+      <Sisalto nimi={osa3} tehtavia={tehtavia3} />
       <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
     </div>
   )

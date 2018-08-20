@@ -41,27 +41,28 @@ const Yhteensa = (props) => (
   <p>yhteensä {props.summa} tehtävää</p>
 )
 
-// tehtävä 1.3
+// tehtävä 1.4
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
-  const osa1 = {
+  const osat = [
+  {
     nimi: 'Reactin perusteet',
     tehtavia: 10
-  }
-  const osa2 = {
+  },
+  {
     nimi: 'Tiedonvälitys propseilla',
     tehtavia: 7
-  }
-  const osa3 = {
+  },
+  {
     nimi: 'Komponenttien tila',
     tehtavia: 14
-  }
+  }]
 
   return (
     <div>
       <Otsikko otsake={kurssi} />
-      <Sisalto tiedot={[osa1,osa2,osa3]} />
-      <Yhteensa summa={osa1.tehtavia + osa2.tehtavia + osa3.tehtavia} />
+      <Sisalto tiedot={osat} />
+      <Yhteensa summa={osat.map(o => o.tehtavia).reduce((t,tot)=>tot=tot+t)} />
     </div>
   )
 }

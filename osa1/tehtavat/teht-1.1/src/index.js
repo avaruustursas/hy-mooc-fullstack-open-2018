@@ -11,6 +11,12 @@ const Sisalto = (props) => (
   <p>{props.nimi} {props.tehtavia}</p>
 )
 
+// Yhteensa: huolehtii tehtavien yhteismäärästä
+// oletetaan, että App:issa propsi annetaan {n + m + k}
+const Yhteensa = (props) => (
+  <p>yhteensä {props.summa} tehtävää</p>
+)
+
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
   const osa1 = 'Reactin perusteet'
@@ -26,7 +32,7 @@ const App = () => {
       <Sisalto nimi={osa1} tehtavia={tehtavia1} />
       <Sisalto nimi={osa2} tehtavia={tehtavia2} />
       <Sisalto nimi={osa3} tehtavia={tehtavia3} />
-      <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
+      <Yhteensa summa={tehtavia1 + tehtavia2 + tehtavia3} />
     </div>
   )
 }

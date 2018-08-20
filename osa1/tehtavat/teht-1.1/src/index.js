@@ -6,6 +6,7 @@ const Otsikko = (props) => (
   <h1>{props.otsake}</h1>
 )
 
+
 // Sisalto: huolehtii osista ja niiden tehtävämääristä
 // Muutetaan tämä niin, että tätä kutsutaan vain kerran kuten tehtävänannossa
 // propsit annetaan listoina, jotka kootaan python zip() tyyliin
@@ -16,8 +17,15 @@ const Otsikko = (props) => (
 // osata käsitellä taulukkoja palautusarvoina
 // Toimii, mutta warningin kera. Pitäisi muka olla joka arrayn jäsenellä
 // 1käsitteiset avaimet
+
+// tehtävä 1.2
+const Osa = (props) => (
+  <p>{props.tiedot[0]} {props.tiedot[1]}</p>
+)
+
+// tässä ei nyt ole <div> erottamassa sisältöä muusta vielä
 const Sisalto = (props) => (
-  props.tiedot.map(t => <p>{t[0]} {t[1]}</p>)
+  props.tiedot.map(t => <Osa tiedot={[t[0],t[1]]} /> )
 )
 
 // Yhteensa: huolehtii tehtavien yhteismäärästä

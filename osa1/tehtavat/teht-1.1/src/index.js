@@ -7,8 +7,17 @@ const Otsikko = (props) => (
 )
 
 // Sisalto: huolehtii osista ja niiden tehtävämääristä
+// Muutetaan tämä niin, että tätä kutsutaan vain kerran kuten tehtävänannossa
+// propsit annetaan listoina, jotka kootaan python zip() tyyliin
+// [osa1,osa2,...] [tehtavia1,tehtavia2,...] ---> [(osa1,tehtavia1),...]
+// ... mutta koska sitä ei ole näköjään valmiina, oletetaan, että propsit
+// annetaan valmiiksi pareina (x,y),(å,z),...
+// palautetaan siis map() tulos, sillä materiaalin mukaan renderöijän pitäisi
+// osata käsitellä taulukkoja palautusarvoina
+// Toimii, mutta warningin kera. Pitäisi muka olla joka arrayn jäsenellä
+// 1käsitteiset avaimet
 const Sisalto = (props) => (
-  <p>{props.nimi} {props.tehtavia}</p>
+  props.tiedot.map(t => <p>{t[0]} {t[1]}</p>)
 )
 
 // Yhteensa: huolehtii tehtavien yhteismäärästä
@@ -29,9 +38,7 @@ const App = () => {
   return (
     <div>
       <Otsikko otsake={kurssi} />
-      <Sisalto nimi={osa1} tehtavia={tehtavia1} />
-      <Sisalto nimi={osa2} tehtavia={tehtavia2} />
-      <Sisalto nimi={osa3} tehtavia={tehtavia3} />
+      <Sisalto tiedot={[[osa1,tehtavia1],[osa2,tehtavia2],[osa3,tehtavia3]]} />
       <Yhteensa summa={tehtavia1 + tehtavia2 + tehtavia3} />
     </div>
   )

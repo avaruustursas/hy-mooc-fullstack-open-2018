@@ -20,13 +20,13 @@ const Otsikko = (props) => (
 
 // tehtävä 1.2
 const Osa = (props) => (
-  <p>{props.tiedot[0]} {props.tiedot[1]}</p>
+  <p>{props.osio.nimi} {props.osio.tehtavia}</p>
 )
 
 // nyt on <div> ympärillä eikä tule edes warning,
 // joka luultavasti johtuu siitä, että nyt Osiin viitataan eksplisiittisesti
 const Sisalto = (props) => {
-  const osat = props.tiedot.map(t => <Osa tiedot={[t[0],t[1]]} /> )
+  const osat = props.tiedot.map(t => <Osa osio={t} /> )
   return (
     <div>
       {osat[0]}
@@ -41,20 +41,27 @@ const Yhteensa = (props) => (
   <p>yhteensä {props.summa} tehtävää</p>
 )
 
+// tehtävä 1.3
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
-  const osa1 = 'Reactin perusteet'
-  const tehtavia1 = 10
-  const osa2 = 'Tiedonvälitys propseilla'
-  const tehtavia2 = 7
-  const osa3 = 'Komponenttien tila'
-  const tehtavia3 = 14
+  const osa1 = {
+    nimi: 'Reactin perusteet',
+    tehtavia: 10
+  }
+  const osa2 = {
+    nimi: 'Tiedonvälitys propseilla',
+    tehtavia: 7
+  }
+  const osa3 = {
+    nimi: 'Komponenttien tila',
+    tehtavia: 14
+  }
 
   return (
     <div>
       <Otsikko otsake={kurssi} />
-      <Sisalto tiedot={[[osa1,tehtavia1],[osa2,tehtavia2],[osa3,tehtavia3]]} />
-      <Yhteensa summa={tehtavia1 + tehtavia2 + tehtavia3} />
+      <Sisalto tiedot={[osa1,osa2,osa3]} />
+      <Yhteensa summa={osa1.tehtavia + osa2.tehtavia + osa3.tehtavia} />
     </div>
   )
 }

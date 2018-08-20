@@ -37,8 +37,9 @@ const Sisalto = (props) => {
 
 // Yhteensa: huolehtii tehtavien yhteismäärästä
 // oletetaan, että App:issa propsi annetaan {n + m + k}
+// ei enää oleteta tehtävässä 1.4
 const Yhteensa = (props) => (
-  <p>yhteensä {props.summa} tehtävää</p>
+  <p>yhteensä {props.summa.map(o => o.tehtavia).reduce((t,tot)=>tot=tot+t)} tehtävää</p>
 )
 
 // tehtävä 1.4
@@ -62,7 +63,7 @@ const App = () => {
     <div>
       <Otsikko otsake={kurssi} />
       <Sisalto tiedot={osat} />
-      <Yhteensa summa={osat.map(o => o.tehtavia).reduce((t,tot)=>tot=tot+t)} />
+      <Yhteensa summa={osat} />
     </div>
   )
 }

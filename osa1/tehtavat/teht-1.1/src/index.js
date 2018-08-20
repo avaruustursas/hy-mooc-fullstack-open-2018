@@ -23,10 +23,17 @@ const Osa = (props) => (
   <p>{props.tiedot[0]} {props.tiedot[1]}</p>
 )
 
-// tässä ei nyt ole <div> erottamassa sisältöä muusta vielä
-const Sisalto = (props) => (
-  props.tiedot.map(t => <Osa tiedot={[t[0],t[1]]} /> )
-)
+// nyt on <div> ympärillä eikä tule edes warning,
+// joka luultavasti johtuu siitä, että nyt Osiin viitataan eksplisiittisesti
+const Sisalto = (props) => {
+  const osat = props.tiedot.map(t => <Osa tiedot={[t[0],t[1]]} /> )
+  return (
+    <div>
+      {osat[0]}
+      {osat[1]}
+      {osat[2]}
+    </div>
+)}
 
 // Yhteensa: huolehtii tehtavien yhteismäärästä
 // oletetaan, että App:issa propsi annetaan {n + m + k}

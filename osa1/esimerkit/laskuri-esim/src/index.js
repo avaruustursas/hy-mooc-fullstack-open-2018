@@ -9,11 +9,10 @@ class App extends React.Component {
       counter: 1
     }
   }
-  asetaArvoon = (arvo) => {
-    return () => {
+  asetaArvoon = (arvo) =>
+    () => {
         this.setState({counter: arvo})
     }
-  }
 
   kasvataYhdella = () => {
     this.setState((prevState) => ({

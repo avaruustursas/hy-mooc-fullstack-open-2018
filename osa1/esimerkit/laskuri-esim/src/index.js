@@ -8,18 +8,29 @@ class App extends React.Component {
       counter: 1
     }
   }
+  kasvataYhdella() {
+    this.setState({counter: this.state.counter + 1})
+  }
+
+  nollaa() {
+    this.setState({counter: 0})
+  }
+
+  nelioi() {
+    this.setState({counter: this.state.counter*this.state.counter})
+  }
 
   render() {
     return (
       <div>
         <div>{this.state.counter}</div>
-        <button onClick={() => this.setState({counter: this.state.counter + 1})}>
+        <button onClick={this.kasvataYhdella.bind(this)}>
           plus<br />
         </button>
-        <button onClick={() => this.setState({counter: this.state.counter*this.state.counter})}>
+        <button onClick={this.nelioi.bind(this)}>
           square<br />
         </button>
-        <button onClick={() => this.setState({counter: 0})}>
+        <button onClick={this.nollaa.bind(this)}>
           reset<br />
         </button>
       </div>

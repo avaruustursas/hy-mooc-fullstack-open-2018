@@ -1,25 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       counter: 1
     }
-    this.kasvataYhdella = this.kasvataYhdella.bind(this)
-    this.nollaa = this.nollaa.bind(this)
-    this.nelioi = this.nelioi.bind(this)
   }
-  kasvataYhdella() {
+  kasvataYhdella = () => {
     this.setState({counter: this.state.counter + 1})
   }
 
-  nollaa() {
+  nollaa = () => {
     this.setState({counter: 0})
   }
 
-  nelioi() {
+  nelioi = () => {
     this.setState({counter: this.state.counter*this.state.counter})
   }
 
@@ -40,6 +38,46 @@ class App extends React.Component {
     )
   }
 }
+
+// class App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       counter: 1
+//     }
+//     this.kasvataYhdella = this.kasvataYhdella.bind(this)
+//     this.nollaa = this.nollaa.bind(this)
+//     this.nelioi = this.nelioi.bind(this)
+//   }
+//   kasvataYhdella() {
+//     this.setState({counter: this.state.counter + 1})
+//   }
+//
+//   nollaa() {
+//     this.setState({counter: 0})
+//   }
+//
+//   nelioi() {
+//     this.setState({counter: this.state.counter*this.state.counter})
+//   }
+//
+//   render() {
+//     return (
+//       <div>
+//         <div>{this.state.counter}</div>
+//         <button onClick={this.kasvataYhdella}>
+//           plus<br />
+//         </button>
+//         <button onClick={this.nelioi}>
+//           square<br />
+//         </button>
+//         <button onClick={this.nollaa}>
+//           reset<br />
+//         </button>
+//       </div>
+//     )
+//   }
+// }
 
 ReactDOM.render(
   <App />,

@@ -7,6 +7,9 @@ class App extends React.Component {
     this.state = {
       counter: 1
     }
+    this.kasvataYhdella = this.kasvataYhdella.bind(this)
+    this.nollaa = this.nollaa.bind(this)
+    this.nelioi = this.nelioi.bind(this)
   }
   kasvataYhdella() {
     this.setState({counter: this.state.counter + 1})
@@ -24,13 +27,13 @@ class App extends React.Component {
     return (
       <div>
         <div>{this.state.counter}</div>
-        <button onClick={this.kasvataYhdella.bind(this)}>
+        <button onClick={this.kasvataYhdella}>
           plus<br />
         </button>
-        <button onClick={this.nelioi.bind(this)}>
+        <button onClick={this.nelioi}>
           square<br />
         </button>
-        <button onClick={this.nollaa.bind(this)}>
+        <button onClick={this.nollaa}>
           reset<br />
         </button>
       </div>

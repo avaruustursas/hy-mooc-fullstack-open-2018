@@ -10,15 +10,21 @@ class App extends React.Component {
     }
   }
   kasvataYhdella = () => {
-    this.setState({counter: this.state.counter + 1})
+    this.setState((prevState) => ({
+      counter: prevState.counter + 1
+    }))
   }
 
   nollaa = () => {
-    this.setState({counter: 0})
+    this.setState((prevState) => ({
+      counter: 0
+    }))
   }
 
   nelioi = () => {
-    this.setState({counter: this.state.counter*this.state.counter})
+    this.setState((prevState) => ({
+      counter: prevState.counter*prevState.counter
+    }))
   }
 
   render() {

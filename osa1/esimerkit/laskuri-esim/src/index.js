@@ -7,16 +7,22 @@ class App extends React.Component {
     this.state = {
       counter: 1
     }
-
-    setInterval(() => {
-      this.setState({counter: this.state.counter + 1})
-    }, 1000)
   }
 
   render() {
-    console.log('renderöidään',this.state.counter)
     return (
-      <div>{this.state.counter}</div>
+      <div>
+        <div>{this.state.counter}</div>
+        <button onClick={() => this.setState({counter: this.state.counter + 1})}>
+          plus<br />
+        </button>
+        <button onClick={() => this.setState({counter: this.state.counter*this.state.counter})}>
+          square<br />
+        </button>
+        <button onClick={() => this.setState({counter: 0})}>
+          reset<br />
+        </button>
+      </div>
     )
   }
 }

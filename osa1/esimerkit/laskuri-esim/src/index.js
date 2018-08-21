@@ -9,6 +9,12 @@ class App extends React.Component {
       counter: 1
     }
   }
+  asetaArvoon = (arvo) => {
+    return () => {
+        this.setState({counter: arvo})
+    }
+  }
+
   kasvataYhdella = () => {
     this.setState((prevState) => ({
       counter: prevState.counter + 1
@@ -31,13 +37,13 @@ class App extends React.Component {
     return (
       <div>
         <div>{this.state.counter}</div>
-        <button onClick={this.kasvataYhdella}>
+        <button onClick={this.asetaArvoon(this.state.counter+1)}>
           plus<br />
         </button>
-        <button onClick={this.nelioi}>
+        <button onClick={this.asetaArvoon(this.state.counter*this.state.counter)}>
           square<br />
         </button>
-        <button onClick={this.nollaa}>
+        <button onClick={this.asetaArvoon(0)}>
           reset<br />
         </button>
       </div>
